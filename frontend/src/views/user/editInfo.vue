@@ -1,15 +1,18 @@
 <template>
     <div class="editInfo">
-        <flow />
+        <!-- <flow /> -->
+        <field-info></field-info>
     </div>
 </template>
 
 <script>
-import flow from '../../components/flow.vue'
+// import flow from '../../components/flow.vue'
+import fieldInfo from '../../components/fieldInfo.vue'
 export default {
     name: 'EditInfo',
     components: {
-        flow
+        // flow,
+        fieldInfo
     }
 }
 </script>

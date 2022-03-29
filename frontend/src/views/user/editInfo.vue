@@ -1,10 +1,16 @@
 <template>
-    <div class="editInfo"></div>
+    <div class="editInfo">
+        <flow />
+    </div>
 </template>
 
 <script>
+import flow from '../../components/flow.vue'
 export default {
-    name: 'EditInfo'
+    name: 'EditInfo',
+    components: {
+        flow
+    }
 }
 </script>
 

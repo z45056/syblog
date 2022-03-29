@@ -1,6 +1,6 @@
 <!-- memberSelect -->
 <template>
-    <a-form-item :label="item.label">
+    <a-form-model-item class="form-item" :label="item.label">
         <a-select
             v-model="item.value"
             placeholder="Select a option and change input text above"
@@ -12,7 +12,7 @@
                 {{ option.name}}
             </a-select-option>
         </a-select>
-    </a-form-item>
+    </a-form-model-item>
 </template>
 
 <script>
@@ -37,5 +37,10 @@ export default {
 </script>
 
 <style lang='less' scoped>
-
+.form-item {
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    box-sizing: border-box;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="nav">
+    <div class="nav" v-if="!islogin">
         <div class="nav-bg">
             <div class="nav-content">
                 <div class="nav-log"></div>
@@ -33,6 +33,7 @@ export default {
     name: "navs",
     data () {
         return {
+            islogin: false,
             routeList: [
                 {
                     name: 'home',
@@ -45,8 +46,12 @@ export default {
             ]
         }
     },
-    methods: {
-    
+    watch: {
+        '$route.name' (val) {
+            if (val === 'login') {
+                this.islogin = true
+            }
+        }
     }
 }
 </script>

@@ -1,13 +1,18 @@
-<!-- string -->
+<!-- datePicker -->
 <template>
     <a-form-model-item class="form-item" :label="item.label" :prop="`${ item.key }`">
-        <a-input v-model="item.value"></a-input>
+        <a-range-picker
+            v-model="item.value"
+            show-time
+            type="date"
+            style="width: 100%;"
+        />
     </a-form-model-item>
 </template>
 
 <script>
 export default {
-    name: 'STRING',
+    name: 'DATEPICKER',
     props: {
         item: {
             type: Object,
@@ -24,8 +29,8 @@ export default {
 <style lang='less' scoped>
 .form-item {
     width: 100%;
-    height: 60px;
-    margin: 20px 20px 0 20px;
+    height: 100%;
+    margin: 20px;
     box-sizing: content-box;
 }
 </style>

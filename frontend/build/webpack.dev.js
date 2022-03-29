@@ -8,7 +8,8 @@ module.exports = merge(webpackConfig, {
             directory: path.join(__dirname, '../public'),
         },
         port: '3001', // 默认是 8080
-        hot: true,
+        hot: 'only',
+        historyApiFallback: true,
         // stats: 'errors-only', // 终端仅打印 error
         compress: true, // 是否启用 gzip 压缩
         proxy: {

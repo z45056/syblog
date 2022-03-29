@@ -26,7 +26,7 @@ module.exports = {
             {
                 test: /\.(le|c)ss$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
-                exclude: /node_modules/,
+                // exclude: /node_modules/,
             },
             {
                 test: /\.(ttf|woff2?)$/,

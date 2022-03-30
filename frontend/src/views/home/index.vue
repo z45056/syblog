@@ -33,7 +33,7 @@ export default {
     .home-left {
         width: 840px;
         height: 100%;
-        background-color: rgb(235, 180, 108);
+        // background-color: rgb(235, 180, 108);
         margin-right: 20px;
         .banner {
             width: 100%;
@@ -45,7 +45,7 @@ export default {
                     text-align: center;
                     height: 210px;
                     line-height: 210px;
-                    background: #364d79;
+                    // background: #364d79;
                     overflow: hidden;
                 }
                 .slick-slide h3 {
@@ -57,7 +57,7 @@ export default {
     .home-right {
         width: 340px;
         height: 100%;
-        background-color: rgb(101, 27, 161);
+        // background-color: rgb(101, 27, 161);
     }
 }
 </style>

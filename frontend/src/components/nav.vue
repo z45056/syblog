@@ -9,6 +9,7 @@
                     </template>
                 </div>
                 <div class="user-content">
+                    <a-button type="primary">发布</a-button>
                     <a-input class="header-search"></a-input>
                     <a-dropdown :placement="'bottomRight'" width="100">
                         <a-avatar icon="user" />
@@ -39,10 +40,10 @@ export default {
                     name: 'home',
                     id: 1
                 },
-                {
-                    name: 'user',
-                    id: 2
-                }
+                // {
+                //     name: 'user',
+                //     id: 2
+                // }
             ]
         }
     },
@@ -93,7 +94,7 @@ export default {
                 }
             }
             .user-content {
-                width: 200px;
+                width: 300px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;

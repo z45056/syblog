@@ -12,7 +12,7 @@
 
 <script>
 import basicInfo from './basicInfo.vue'
-import userConter from './userConter.vue'
+import userConter from './userCenter.vue'
 import editInfo from './editInfo.vue'
 export default {
     name: 'User',

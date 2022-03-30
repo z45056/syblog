@@ -40,7 +40,7 @@ export default {
         flex: 1;
         width: 100%;
         margin: 0 auto;
-        // min-width: 1200px;
+        min-width: 1200px;
         overflow-x: hidden;
     }
 }

@@ -4,8 +4,8 @@
             <basicInfo />
         </div>
         <div class="person">
-            <userConter />
-            <editInfo />
+            <user-conter @getCurActive="getCurActive"></user-conter>
+            <edit-info :cur-active="curActive"></edit-info>
         </div>
     </div>
 </template>
@@ -16,10 +16,20 @@ import userConter from './userConter.vue'
 import editInfo from './editInfo.vue'
 export default {
     name: 'User',
+    data () {
+        return {
+            curActive: 'my_basic_info'
+        }
+    },
     components: {
         basicInfo,
         userConter,
         editInfo
+    },
+    methods: {
+        getCurActive (val) {
+            this.curActive = val
+        }
     }
 }
 </script>

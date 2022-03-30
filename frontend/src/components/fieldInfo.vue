@@ -21,7 +21,7 @@ import string from './fieldComponents/string.vue'
 import memberSelect from './fieldComponents/memberSelect.vue'
 import datePicker from './fieldComponents/datePicker.vue'
 import getValidationRules from './fieldComponents/validate.js'
-// console.log(getValidationRules)
+
 export default {
     name: 'FieldInfo',
     components: {
@@ -64,24 +64,6 @@ export default {
         })
     },
     methods: {
-        // validate () {
-        //     // this.$refs.customForm.validate(validate => {
-        //     //     if (validate) {
-        //     //         console.log(validate)
-        //     //         return true
-        //     //     } else {
-        //     //         return false
-        //     //     }
-        //     // })
-        //     let data = {}
-        //     Promise.all([this.$refs.customForm.validate()]).then(res => {
-        //         console.log(res)
-        //         data = {
-        //             a: 2
-        //         }
-        //     })
-        //     return data
-        // }
     }
 }
 </script>

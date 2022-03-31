@@ -109,6 +109,9 @@ body {
   color: #000;
   user-select:none;
   -webkit-user-select: none;
+
+
+  
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   outline: 0;

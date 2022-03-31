@@ -2,7 +2,7 @@
     <div class="editInfo-content">
         <div class="edit-user-info">
             <div v-if="!isValidate" class="getCode">
-                <a-input-search v-model="phone" style="margin-bottom: 20px" placeholder="输入注册手机号码" size="default" @search="getCode">
+                <a-input-search v-model="phone" style="margin-bottom: 20px" placeholder="输入注册邮箱" size="default" @search="getCode">
                     <a-button slot="enterButton" :disabled="vcodeDidsable">发送验证码</a-button>
                 </a-input-search>
                 <a-input-password v-model="vCode" :disabled="vcodeDidsable" placeholder="输入验证码" />

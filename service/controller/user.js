@@ -1,4 +1,5 @@
 const pool = require('../model/index')
+const postMailer = require('./postMailer')
 // 用户登录
 exports.login = async (req, res, next) => {
     const { username, password } = req.body
@@ -60,6 +61,7 @@ exports.resigter = async (req, res, next) => {
 // 更新用户
 exports.update = async (req, res, next) => {
     try {
+        postMailer.sendMail('1440372837@qq.com', '哈哈哈')
         const reslut = {
             msg: 'update sucess',
             data: []
@@ -69,4 +71,5 @@ exports.update = async (req, res, next) => {
         next(err)
     }
 }
+
 

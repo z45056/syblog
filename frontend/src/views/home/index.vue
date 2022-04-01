@@ -10,6 +10,7 @@
                 </a-carousel>
             </div>
             <div class="quick-nav">
+                <a-button @click="entryDetail">-->进入详情页面</a-button>
                 😷😷😷待开发ing
             </div>
         </div>
@@ -19,7 +20,17 @@
 
 <script>
 export default {
-    name: 'Home'
+    name: 'Home',
+    methods: {
+        entryDetail () {
+            this.$router.push({
+                name: 'detail',
+                query: {
+                    from: 'home'
+                }
+            })
+        }
+    }
 }
 </script>
 

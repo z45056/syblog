@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import 'github-markdown-css/github-markdown.css'
 export default {
     name: 'Creation',
     data () {

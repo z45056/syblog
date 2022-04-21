@@ -1,5 +1,6 @@
 <template>
-    <div class="detail">详情页</div>
+    <div class="detail">详情页
+    </div>
 </template>
 
 <script>

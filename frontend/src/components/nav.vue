@@ -9,7 +9,7 @@
                     </template>
                 </div>
                 <div class="user-content">
-                    <a-button type="primary">发布</a-button>
+                    <a-button type="primary" @click="createBG">发布</a-button>
                     <a-input class="header-search"></a-input>
                     <a-dropdown :placement="'bottomRight'" width="100">
                         <a-avatar icon="user" />
@@ -52,6 +52,14 @@ export default {
             if (val === 'login') {
                 this.islogin = true
             }
+        }
+    },
+    methods: {
+        createBG () {
+            this.$router.push({
+                name: 'creation',
+                query: this.$route.name
+            })
         }
     }
 }

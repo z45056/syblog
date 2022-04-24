@@ -3,7 +3,7 @@
 //     connectionLimit: 10,
 //     host: 'localhost',
 //     user: 'root',
-//     password: 'zhang123456',
+//     password: 'zhang*******',
 //     database: 'myworkbench'
 // })
 // pool.connect(function (err) {

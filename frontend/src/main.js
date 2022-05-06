@@ -13,8 +13,10 @@ Vue.prototype.$md = new markdownIt()
 Vue.use(mavonEditor)
 Vue.use(Antd)
 import router from './router/index'
+import store from './store'
 
 new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount('#app')

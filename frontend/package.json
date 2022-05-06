@@ -41,6 +41,7 @@
     "@babel/runtime": "^7.17.2",
     "@babel/runtime-corejs3": "^7.17.2",
     "ant-design-vue": "^1.7.8",
+    "axios": "^0.27.2",
     "github-markdown-css": "^5.1.0",
     "jsplumb": "^2.15.6",
     "markdown-it": "^12.3.2",

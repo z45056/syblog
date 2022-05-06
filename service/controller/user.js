@@ -4,8 +4,9 @@ const postMailer = require('./postMailer')
 exports.login = async (req, res, next) => {
     const { username, password } = req.body
     try {
-        const sql = `select username,password from users where username in ('${username}') and password in ('${password}')`
+        const sql = `select username,password from user where username in ('${username}') and password in ('${password}')`
         pool.query(sql, (err, reslut) => {
+            console.log(reslut)
             console.log(reslut)
             if (reslut && reslut.length === 0) {
                 return res.status(401).json({
@@ -32,15 +33,19 @@ exports.login = async (req, res, next) => {
 // 注册
 exports.resigter = async (req, res, next) => {
     const { username, password } = req.body
+    console.log(req.body)
     try {
-        const relpySql = `select * from users where username='${username}'`
-        const sql = `insert into users (username,password) values ('${username}', '${password}')`
+        const relpySql = `SELECT * FROM user where username='${username}'`
+        const sql = `INSERT INTO user (username,password) values ('${username}', '${password}')`
+        console.log(sql)
         pool.query(relpySql, (err, reslut) => {
-            if (reslut.length !== 0) {
-                res.cc('该用户已存在', 203)
+            // console.log(reslut)
+            if (reslut && reslut.length !== 0) {
+                res.cc('该用户已存在', 403)
             } else {
                 pool.query(sql, (err1, reslut1) => {
-                    const Sql = `select * from users where id='${reslut1.insertId}'`
+                    console.log(reslut1)
+                    const Sql = `select * from user where id='${reslut1.insertId}'`
                     pool.query(Sql, (err2, reslut2) => {
                         reslut2.forEach(item => {
                             delete item.password

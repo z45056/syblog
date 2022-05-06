@@ -40,10 +40,10 @@ export default {
                     name: 'home',
                     id: 1
                 },
-                // {
-                //     name: 'user',
-                //     id: 2
-                // }
+                {
+                    name: 'article',
+                    id: 2
+                }
             ]
         }
     },

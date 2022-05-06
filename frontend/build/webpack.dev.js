@@ -13,8 +13,8 @@ module.exports = merge(webpackConfig, {
         // stats: 'errors-only', // 终端仅打印 error
         compress: true, // 是否启用 gzip 压缩
         proxy: {
-            '/api': {
-                target: 'http://localhost:3000',
+            '/': {
+                target: 'http://localhost:3000/',
                 changeOrigin: true
             }
         }

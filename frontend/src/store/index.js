@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from '../utils/ajax'
 
-import user from './module/user'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
-        user
     },
     state: {
         deepcopy: function (item) {
@@ -34,5 +33,13 @@ export default new Vuex.Store({
                 return item
             }
         },
+    },
+    mutations: {
+
+    },
+    actions: {
+        login ({ commit, state, dispatch }, params) {
+            return axios.post('/login', params).then(response => response.data)
+        }
     }
 })

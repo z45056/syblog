@@ -25,15 +25,15 @@
 
 const list = [
     { name: '全部', key: 'all'},
-    { name: 'A', key: 'a'},
-    { name: 'B', key: 'b'},
-    { name: 'C', key: 'c'},
-    { name: 'D', key: 'd'},
-    { name: 'E', key: 'e'},
-    { name: 'F', key: 'f'},
-    { name: 'G', key: 'g'},
-    { name: 'H', key: 'h'},
-    { name: 'I', key: 'i'}
+    { name: '第一章', key: 'a'},
+    { name: '第二章', key: 'b'},
+    { name: '第三章', key: 'c'},
+    { name: '第四章', key: 'd'},
+    { name: '第五章', key: 'e'},
+    { name: '第六章', key: 'f'},
+    { name: '第七章', key: 'g'},
+    { name: '第八章', key: 'h'},
+    { name: '第九章', key: 'i'}
 ]
 export default {
     name: 'Article',
@@ -67,16 +67,19 @@ export default {
     }
     .classify {
         width: 100%;
-        height: 40px;
+        // height: 40px;
         line-height: 40px;
         background-color: #fff;
         display: flex;
         margin-bottom: 20px;
         .tag-title {
             width: 60px;
+            line-height: 47px;
             text-align: center;
         }
         .tag {
+            display: flex;
+            flex-flow: wrap;
             flex: 1;
             .tag-item {
                 padding: 4px 10px;

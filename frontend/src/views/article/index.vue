@@ -52,6 +52,12 @@ export default {
         },
         enteyDetail (val) {
             console.log(val)
+            this.$router.push({
+                name: 'detail',
+                query: {
+                    a_id: val.key
+                }
+            })
         }
     }
 }

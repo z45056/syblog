@@ -34,6 +34,12 @@ const routes = [
         children: []
     },
     {
+        path: '/tools',
+        name: 'tools',
+        component: () => import('../views/tools/index.vue'),
+        children: []
+    },
+    {
         path: '/creation',
         name: 'creation',
         component: () => import('../views/creation/index.vue'),

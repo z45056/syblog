@@ -43,6 +43,10 @@ export default {
                 {
                     name: 'article',
                     id: 2
+                },
+                {
+                    name: 'tools',
+                    id: 3
                 }
             ]
         }

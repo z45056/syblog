@@ -8,8 +8,21 @@ import './asset/font/iconfont.css'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 const markdownIt = require('markdown-it')
-import 'github-markdown-css/github-markdown.css'
-Vue.prototype.$md = new markdownIt()
+const hljs = require('highlight.js')
+Vue.prototype.$md = new markdownIt({
+    highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            try {
+                return '<pre class="hljs"><code>' +
+                    hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+                    '</code></pre>';
+            } catch (__) { }
+        }
+        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+    }
+})
+// Vue.prototype.$md.options.highlight = true
+import 'github-markdown-css'
 Vue.use(mavonEditor)
 Vue.use(Antd)
 import router from './router/index'

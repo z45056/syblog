@@ -31,7 +31,6 @@
                     <div class="table-header">
                         <div class="table-header-title" v-for="(item, index) in addColumnData.config.row_list" :key="index">
                             <div>{{item.title || '--'}}</div>
-                            <!-- <div>{{}}</div> -->
                         </div>
                     </div>
                     <div class="table-body">

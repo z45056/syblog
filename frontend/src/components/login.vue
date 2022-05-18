@@ -1,7 +1,7 @@
 <template>
     <div class="login-page">
         <div class="content">
-            <div class="center" :class="{'show': active}">
+            <!-- <div class="center" :class="{'show': active}">
                 <a-button class="btn" @click="handleClick">前往{{active ? '登录' : '注册' }}</a-button>
                 <div class="login form-view">
                     <fieldInfo ref="loginFrom" :fields="loginFields"></fieldInfo>
@@ -15,7 +15,7 @@
                         <a-button class="submit" type="primary" @click="handleSumbit('register')">注册</a-button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
   </div>
 </template>
@@ -89,7 +89,8 @@ export default {
 .login-page {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(skyblue, pink);
+    // background: linear-gradient(skyblue, pink);
+    background-color: #f0f1f5;
     position: relative;
     overflow: hidden;
     .content {

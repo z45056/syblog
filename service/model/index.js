@@ -4,7 +4,7 @@ var pool = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'zhang123456',
-    database: 'manage'
+    database: 'myworkbench'
 })
 pool.connect(function (err) {
     if (err) throw err;

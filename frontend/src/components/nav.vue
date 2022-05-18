@@ -1,5 +1,5 @@
 <template>
-    <div class="nav" v-if="!islogin">
+    <div class="nav">
         <div class="nav-bg">
             <div class="nav-content">
                 <div class="nav-log"></div>
@@ -11,7 +11,7 @@
                 <div class="user-content">
                     <a-button type="primary" @click="createBG">创作</a-button>
                     <a-input class="header-search"></a-input>
-                    <a-dropdown :placement="'bottomRight'" width="100">
+                    <a-dropdown v-if="false" :placement="'bottomRight'" width="100">
                         <a-avatar icon="user" />
                         <a-menu slot="overlay">
                             <a-menu-item>
@@ -22,7 +22,10 @@
                             </a-menu-item>
                         </a-menu>
                     </a-dropdown>
-                    
+                    <p v-else class="login">
+                        <span>登录</span>
+                        <span>注册</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -53,8 +56,11 @@ export default {
     },
     watch: {
         '$route.name' (val) {
+            console.log(val)
             if (val === 'login') {
                 this.islogin = true
+            } else {
+                this.islogin = false
             }
         }
     },
@@ -78,6 +84,7 @@ export default {
     .nav-bg {
         width: 1200px;
         margin: 0 auto;
+        height: 60px;
         background-color: #2d2f33;
         .nav-content {
             width: 1200px;
@@ -106,12 +113,26 @@ export default {
                 }
             }
             .user-content {
-                width: 300px;
+                width: 350px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 .header-search {
                     width: 150px;
+                }
+                .login {
+                    width: 80px;
+                    height: 40px;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    span {
+                        // flex: 1;
+                        margin-top: 10px;
+                        color: #fff;
+                        cursor: pointer;
+                    }
                 }
             }
         }

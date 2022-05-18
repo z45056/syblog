@@ -4,10 +4,10 @@
             <div class="home-item">
                 <div class="banner">
                     <a-carousel autoplay>
-                        <div><h3>1</h3></div>
-                        <div><h3>2</h3></div>
-                        <div><h3>3</h3></div>
-                        <div><h3>4</h3></div>
+                        <div v-for="(item, index) in bannerList" :key="index">
+                            <img style="width: 840px;height:210px" :src="item.src" :alt="item.name">
+                        </div>
+
                     </a-carousel>
                 </div>
             </div>
@@ -47,6 +47,24 @@ export default {
         return {
             rankList: [
                 { name: '这是第一个', id: 1}
+            ],
+            bannerList: [
+                {
+                    name:'和呵呵',
+                    src: require('../../asset/img/home-b-1.png')
+                },
+                {
+                    name:'哈哈哈哈哈',
+                    src: require('../../asset/img/home-b-2.png')
+                },
+                {
+                    name:'顶顶顶顶顶大王',
+                    src: require('../../asset/img/home-b-3.png')
+                },
+                {
+                    name:'呃呃呃呃呃呃呃',
+                    src: require('../../asset/img/home-b-4.png')
+                },
             ],
             username: 'admin',
             password: '123456'

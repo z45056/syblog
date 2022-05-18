@@ -56,7 +56,7 @@ export default {
     methods: {
         handleTagJump (item) {
             this.$router.push({
-                name: 'detail',
+                name: 'article',
                 query: {
                     tag: item.name
                 }

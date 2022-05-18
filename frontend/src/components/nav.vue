@@ -23,8 +23,8 @@
                         </a-menu>
                     </a-dropdown>
                     <p v-else class="login">
-                        <span>登录</span>
-                        <span>注册</span>
+                        <span @click="login">登录</span>
+                        <span @click="register">注册</span>
                     </p>
                 </div>
             </div>
@@ -69,6 +69,15 @@ export default {
             this.$router.push({
                 name: 'creation',
                 query: this.$route.name
+            })
+        },
+        login () {
+            console.log(this.$bus)
+            this.$bus.$emit('openLoginModal', true)
+        },
+        register () {
+            this.$router.push({
+                name: 'register'
             })
         }
     }

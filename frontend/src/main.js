@@ -23,8 +23,10 @@ Vue.prototype.$md = new markdownIt({
 })
 // Vue.prototype.$md.options.highlight = true
 import 'github-markdown-css'
+Vue.prototype.$bus = new Vue()
 Vue.use(mavonEditor)
 Vue.use(Antd)
+// 登录弹出框
 import router from './router/index'
 import store from './store'
 

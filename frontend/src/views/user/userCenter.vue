@@ -41,6 +41,11 @@ export default {
                     name: '我的发布',
                     key: 'my_issue',
                     icon: 'icon-EmojiAdd'
+                },
+                {
+                    name: '高级设置',
+                    key: 'settings',
+                    icon: 'icon-EmojiAdd'
                 }
             ]
         }

@@ -1,6 +1,6 @@
 <template>
     <div class="editInfo">
-        <div class="editInfo-title">编辑资料</div>
+        <div class="editInfo-title">{{ editTitle }}</div>
         <template v-if="curActive === 'my_basic_info'">
             <edit-user-info></edit-user-info>
         </template>
@@ -30,6 +30,25 @@ export default {
     components: {
         editUserInfo,
         editPassword
+    },
+    data () {
+        return {
+
+        }
+    },
+    computed: {
+        editTitle () {
+            // title
+            const list = {
+                my_basic_info: '编辑资料',
+                my_process: '我的流程',
+                my_favorite: '我的收藏',
+                change_password: '修改密码',
+                my_issue: '我的发布',
+                settings: '高级设置',
+            }
+            return list[this.curActive] || '编辑资料'
+        }
     }
 }
 </script>

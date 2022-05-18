@@ -21,11 +21,12 @@
             </div>
         </div>
         <div class="home-right">
+            <div class="gif"></div>
             <div class="announcement">
                 <div class="announcement-content">
-                    <a-input v-model="username" placeholder="Basic usage" />
+                    <!-- <a-input v-model="username" placeholder="Basic usage" />
                     <a-input-password v-model="password" placeholder="input password" />
-                    <a-button @click="submit">登录</a-button>
+                    <a-button @click="submit">登录</a-button> -->
                 </div>
             </div>
             <div class="rank">
@@ -111,9 +112,18 @@ export default {
         }
     }
     .home-right {
+        position: relative;
         width: 340px;
         height: 100%;
         background-color: #fff;
+        .gif {
+            position: absolute;
+            top: -136px;
+            left: 0;
+            width: 144px;
+            height: 144px;
+            background: url('../../asset/img/caoshilaimu.gif') no-repeat;
+        }
         .announcement {
             width: 100%;
             // width: 340px;
@@ -125,6 +135,7 @@ export default {
                 width: 100%;
                 height: 100%;
                 background-color: #fff;
+                
             }
         }
     }

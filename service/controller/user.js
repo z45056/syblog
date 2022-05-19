@@ -1,35 +1,33 @@
 const pool = require('../model/index')
 const postMailer = require('./postMailer')
+const jwt = require('jsonwebtoken')
+const config = require('../config/index')
+
 // 用户登录
 exports.login = async (req, res, next) => {
     const { username, password } = req.body
     try {
-        const sql = `select username,password from user where username in ('${username}') and password in ('${password}')`
-        pool.query(sql, (err, reslut) => {
+        const sql = `select * from users where username=?`
+        pool.query(sql, username, (err, reslut) => {
             console.log(reslut)
-            console.log(reslut)
-            if (reslut && reslut.length === 0) {
-                return res.status(401).json({
-                    status: false,
-                    code: 1,
-                    message: '用户名或密码错误'
-                })
-            } else {
-                reslut.forEach(item => {
-                    delete item.password
-                });
-                const ressql = {
-                    code: 0,
-                    status: 'success',
-                    data: reslut
-                }
-                res.status(200).json(ressql)
-            }
+            if (err) return res.cc(err)
+            if (reslut.length !== 1) return res.cc('用户名或密码错误', 400)
+            if (reslut[0].password !== password) return res.cc('密码错误', 400)
+            reslut.forEach(item => {
+                delete item.password
+            });
+            // 生成token
+            const user = {...reslut[0], password: '', user_pic: ''}
+            const tokenStr = jwt.sign(user, config.jwtSecretKey, { expiresIn: config.expiresIn})
+            // 返回token
+            reslut[0].token = 'Bearer ' + tokenStr
+            res.cc('success', 200, reslut[0])
         })
     } catch (err) {
         next(err)
     }
 }
+
 // 注册
 exports.resigter = async (req, res, next) => {
     const { username, password } = req.body
@@ -75,6 +73,9 @@ exports.update = async (req, res, next) => {
     } catch (err) {
         next(err)
     }
+}
+exports.get_user_info = (req, res, next) => {
+
 }
 
 

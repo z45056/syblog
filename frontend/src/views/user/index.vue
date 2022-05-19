@@ -29,6 +29,11 @@ export default {
     methods: {
         getCurActive (val) {
             this.curActive = val
+        },
+        init () {
+            this.$store.dispatch('userinfo/get_user_info').then(res => {
+                console.log(res)
+            })
         }
     }
 }

@@ -12,12 +12,12 @@ module.exports = merge(webpackConfig, {
         historyApiFallback: true,
         // stats: 'errors-only', // 终端仅打印 error
         compress: true, // 是否启用 gzip 压缩
-        // proxy: {
-        //     '/': {
-        //         target: 'http://localhost:3000/',
-        //         changeOrigin: true
-        //     }
-        // }
+        proxy: {
+            '/': {
+                target: 'http://localhost:3000/',
+                changeOrigin: true
+            }
+        }
     },
     devtool: 'eval-cheap-module-source-map',
 })

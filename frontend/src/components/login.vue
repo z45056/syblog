@@ -7,7 +7,7 @@
             @submit="handleSubmit">
             <a-form-item>
                 <a-input
-                    v-decorator="['userName', { rules: [{ required: true, message: 'Please input your username!' }] }]"
+                    v-decorator="['username', { rules: [{ required: true, message: 'Please input your username!' }] }]"
                     placeholder="Username">
                     <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
                 </a-input>
@@ -43,6 +43,7 @@
 
 <script>
 import fieldInfo from '../components/fieldInfo.vue'
+// import cookie from 'cookie'
 export default {
     name: "login",
     components: {
@@ -71,14 +72,29 @@ export default {
         this.form = this.$form.createForm(this, { name: 'normal_login' });
     },
     methods: {
+        setCookie (cname, cvalue, exdays){
+            const d = new Date();
+            d.setTime(d.getTime()+(exdays * 24 * 60 * 60 * 1000));
+            const expires = "expires="+d.toGMTString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        },
         handleSubmit(e) {
+            console.log(this.$store)
             e.preventDefault()
             this.form.validateFields((err, values) => {
                 if (!err) {
-                    console.log('Received values of form: ', values)
+                    const params = {
+                        username: values.username,
+                        password: values.password
+                    }
+                    
+                    this.$store.dispatch('user/login', params).then(res => {
+                        console.log(res)
+                        this.setCookie('token', res.data.token, 7)
+                    })
                 }
             })
-        },
+        }
     }
 };
 </script>

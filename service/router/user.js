@@ -1,6 +1,5 @@
 const express = require('express')
 
-const joi = require('joi')
 const router = express.Router()
 const user = require('../controller/user.js')
 // 用户登录

@@ -24,5 +24,6 @@ exports.get_query = (type, query, form_name, field = '*') => {
             console.log(type, query)
             break;
     }
+    console.log(t)
     return t
 }

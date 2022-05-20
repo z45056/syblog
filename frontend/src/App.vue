@@ -36,9 +36,6 @@ export default {
             this.visible = val
         })
     }
-    // mounted () {
-    //     console.log()
-    // }
 }
 </script>
 

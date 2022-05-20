@@ -11,14 +11,14 @@
                 <div class="user-content">
                     <a-button type="primary" @click="createBG">创作</a-button>
                     <a-input class="header-search"></a-input>
-                    <a-dropdown v-if="false" :placement="'bottomRight'" width="100">
+                    <a-dropdown v-if="islogin" :placement="'bottomRight'" width="100">
                         <a-avatar icon="user" />
                         <a-menu slot="overlay">
                             <a-menu-item>
                                 <router-link :to="{ name: 'user'}">个人中心</router-link>
                             </a-menu-item>
                             <a-menu-item>
-                                <span>退出登录</span>
+                                <span @click="loginOut">退出登录</span>
                             </a-menu-item>
                         </a-menu>
                     </a-dropdown>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import cookie from 'cookie'
 export default {
     name: "navs",
     data () {
@@ -54,22 +55,27 @@ export default {
             ]
         }
     },
-    watch: {
-        '$route.name' (val) {
-            console.log(val)
-            if (val === 'login') {
-                this.islogin = true
-            } else {
-                this.islogin = false
-            }
-        }
+    created () {
+        this.$bus.$on('changeLoginStatus', this.changeLoginStatus)
+    },
+    mounted () {
+        this.islogin = cookie.parse(document.cookie).token
     },
     methods: {
+        changeLoginStatus () {
+            this.islogin = cookie.parse(document.cookie).token !== ''
+        },
         createBG () {
             this.$router.push({
                 name: 'creation',
                 query: this.$route.name
             })
+        },
+        loginOut () {
+            // 2022-05-27T05:04:54.000Z
+            document.cookie = `token=;expires=Thu, 01 Jan 1970 00:00:01`;
+            this.$message.success('退出登录成功');
+            this.islogin = false
         },
         login () {
             console.log(this.$bus)

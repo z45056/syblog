@@ -79,7 +79,6 @@ export default {
             document.cookie = cname + "=" + cvalue + "; " + expires;
         },
         handleSubmit(e) {
-            console.log(this.$store)
             e.preventDefault()
             this.form.validateFields((err, values) => {
                 if (!err) {
@@ -87,10 +86,12 @@ export default {
                         username: values.username,
                         password: values.password
                     }
-                    
                     this.$store.dispatch('user/login', params).then(res => {
                         console.log(res)
                         this.setCookie('token', res.data.token, 7)
+                    }).finally(() => {
+                        this.$bus.$emit('openLoginModal', false)
+                        this.$bus.$emit('changeLoginStatus')
                     })
                 }
             })

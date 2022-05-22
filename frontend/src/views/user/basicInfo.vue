@@ -3,13 +3,13 @@
         <a-avatar class="acatar" :size="100" icon="user" />
         <div class="basic">
             <div class="basic-user">
-                <span class="basic-name">哈哈哈我还好</span>
+                <span class="basic-name">{{ userInfo.nick_name || userInfo.username }}</span>
                 <i class="iconfont"></i>
                 <span class="basic-grade">Lv{{ 4 }}</span>
                 <!-- <p class="basic_ids"></p> -->
             </div>
             <div class="basic-laber">
-                <i class="iconfont icon-xiaoxi">我要七七满命</i>
+                <i class="iconfont icon-xiaoxi">{{ userInfo.signature }}</i>
             </div>
             <div class="basic-edit">
                 <a-button>编辑</a-button>
@@ -36,7 +36,10 @@
 
 <script>
 export default {
-
+    name: 'basicInfo',
+    props: {
+        userInfo: Object
+    }
 }
 </script>
 

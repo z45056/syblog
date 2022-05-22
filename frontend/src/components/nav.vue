@@ -73,12 +73,23 @@ export default {
         },
         loginOut () {
             // 2022-05-27T05:04:54.000Z
-            document.cookie = `token=;expires=Thu, 01 Jan 1970 00:00:01`;
-            this.$message.success('退出登录成功');
-            this.islogin = false
+            document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:01`;
+            this.$message.loading('正在退出中...', 2.5);
+            setTimeout(() => {
+                this.islogin = false
+                if (this.$route.name !== 'home') {
+                    this.$message.success('退出登录成功,即将返回首页');
+                } else {
+                    this.$message.success('退出登录成功');
+                }
+                setTimeout(() => {
+                    this.$router.push({
+                        name: 'home'
+                    })
+                }, 2000);
+            }, 1000);
         },
         login () {
-            console.log(this.$bus)
             this.$bus.$emit('openLoginModal', true)
         },
         register () {

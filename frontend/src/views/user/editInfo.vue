@@ -25,7 +25,11 @@ import editPassword from './center/editPassword.vue'
 export default {
     name: 'EditInfo',
     props: {
-        curActive: String
+        curActive: String,
+        userInfo: {
+            type: Object,
+            default: () => {}
+        }
     },
     components: {
         editUserInfo,

@@ -3,14 +3,14 @@
         <div class="edit-user-info">
             <a-form-model :model="formData" labelAlign="left" :labelCol="{span: 4}" :wrapperCol="{span: 20}">
                 <a-form-model-item label="昵称">
-                    <a-input v-model="formData.username" />
+                    <a-input v-model="formData.nickName" />
                 </a-form-model-item>
                 <a-form-model-item label="性别">
                     <a-radio-group v-model="formData.sex">
-                        <a-radio value="1">
+                        <a-radio value="0">
                             男
                         </a-radio>
-                        <a-radio value="2">
+                        <a-radio value="1">
                             女
                         </a-radio>
                     </a-radio-group>
@@ -28,14 +28,33 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: 'EditUserInfo',
     data () {
         return {
             formData: {
-                username: '',
+                nickName: '',
                 sex: '',
                 signature: ''
+            }
+        }
+    },
+    computed: {
+        ...mapState({
+            userInfo: state => state.user.userInfo
+        })
+    },
+    mounted () {
+        this.init()
+    },
+    methods: {
+        init () {
+            if (this.userInfo) {
+                const { nick_name, sex, signature } = this.userInfo
+                this.formData.nickName = nick_name
+                this.formData.sex = String(sex)
+                this.formData.signature = signature
             }
         }
     }

@@ -87,7 +87,7 @@ export default {
                         password: values.password
                     }
                     this.$store.dispatch('user/login', params).then(res => {
-                        console.log(res)
+                        this.$message.success('登录成功');
                         this.setCookie('token', res.data.token, 7)
                     }).finally(() => {
                         this.$bus.$emit('openLoginModal', false)

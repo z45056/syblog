@@ -3,7 +3,8 @@ module.exports = {
     expiresIn: '10h',
     algorithms: ["HS256"],
     path: [
+        '/api/register',
         '/api/login',
-        '/my/userinfo'
+        '/favicon.ico'
     ] // 跳过路由验证
 }

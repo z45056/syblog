@@ -6,7 +6,7 @@ import cookie from 'cookie'
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
     config.headers = {
-        Authenticator: cookie.parse(document.cookie).token
+        authorization: cookie.parse(document.cookie).token
     }
     // 在发送请求之前做些什么
     return config;

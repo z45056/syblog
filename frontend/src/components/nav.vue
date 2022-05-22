@@ -1,5 +1,5 @@
 <template>
-    <div class="nav" v-if="!islogin">
+    <div class="nav">
         <div class="nav-bg">
             <div class="nav-content">
                 <div class="nav-log"></div>
@@ -11,18 +11,21 @@
                 <div class="user-content">
                     <a-button type="primary" @click="createBG">创作</a-button>
                     <a-input class="header-search"></a-input>
-                    <a-dropdown :placement="'bottomRight'" width="100">
+                    <a-dropdown v-if="islogin" :placement="'bottomRight'" width="100">
                         <a-avatar icon="user" />
                         <a-menu slot="overlay">
                             <a-menu-item>
                                 <router-link :to="{ name: 'user'}">个人中心</router-link>
                             </a-menu-item>
                             <a-menu-item>
-                                <span>退出登录</span>
+                                <span @click="loginOut">退出登录</span>
                             </a-menu-item>
                         </a-menu>
                     </a-dropdown>
-                    
+                    <p v-else class="login">
+                        <span @click="login">登录</span>
+                        <span @click="register">注册</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -30,6 +33,7 @@
 </template>
 
 <script>
+import cookie from 'cookie'
 export default {
     name: "navs",
     data () {
@@ -40,25 +44,57 @@ export default {
                     name: 'home',
                     id: 1
                 },
-                // {
-                //     name: 'user',
-                //     id: 2
-                // }
+                {
+                    name: 'article',
+                    id: 2
+                },
+                {
+                    name: 'tools',
+                    id: 3
+                }
             ]
         }
     },
-    watch: {
-        '$route.name' (val) {
-            if (val === 'login') {
-                this.islogin = true
-            }
-        }
+    created () {
+        this.$bus.$on('changeLoginStatus', this.changeLoginStatus)
+    },
+    mounted () {
+        this.islogin = cookie.parse(document.cookie).token
     },
     methods: {
+        changeLoginStatus () {
+            this.islogin = cookie.parse(document.cookie).token !== ''
+        },
         createBG () {
             this.$router.push({
                 name: 'creation',
                 query: this.$route.name
+            })
+        },
+        loginOut () {
+            // 2022-05-27T05:04:54.000Z
+            document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:01`;
+            this.$message.loading('正在退出中...', 2.5);
+            setTimeout(() => {
+                this.islogin = false
+                if (this.$route.name !== 'home') {
+                    this.$message.success('退出登录成功,即将返回首页');
+                } else {
+                    this.$message.success('退出登录成功');
+                }
+                setTimeout(() => {
+                    this.$router.push({
+                        name: 'home'
+                    })
+                }, 2000);
+            }, 1000);
+        },
+        login () {
+            this.$bus.$emit('openLoginModal', true)
+        },
+        register () {
+            this.$router.push({
+                name: 'register'
             })
         }
     }
@@ -74,6 +110,7 @@ export default {
     .nav-bg {
         width: 1200px;
         margin: 0 auto;
+        height: 60px;
         background-color: #2d2f33;
         .nav-content {
             width: 1200px;
@@ -102,12 +139,26 @@ export default {
                 }
             }
             .user-content {
-                width: 300px;
+                width: 350px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 .header-search {
                     width: 150px;
+                }
+                .login {
+                    width: 80px;
+                    height: 40px;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    span {
+                        // flex: 1;
+                        margin-top: 10px;
+                        color: #fff;
+                        cursor: pointer;
+                    }
                 }
             }
         }

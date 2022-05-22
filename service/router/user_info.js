@@ -1,10 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
+// 个人中心
+router.get('/userinfo', (req, res) => {
+    res.send('ok')
+})
 
-// 用户
-router.use('/api', require('./user'))
-router.use('/my', require('./user_info'))
+
+
+
+
+
 
 
 module.exports = router

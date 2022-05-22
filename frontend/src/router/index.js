@@ -5,9 +5,9 @@ Vue.use(Router)
 
 const routes = [
     {
-        path: '/login',
-        name: 'login',
-        component: () => import('../components/login.vue')
+        path: '/register',
+        name: 'register',
+        component: () => import('../components/register.vue')
     },
     {
         path: '/',
@@ -25,6 +25,18 @@ const routes = [
         path: '/detail',
         name: 'detail',
         component: () => import('../views/detail/index.vue'),
+        children: []
+    },
+    {
+        path: '/article',
+        name: 'article',
+        component: () => import('../views/article/index.vue'),
+        children: []
+    },
+    {
+        path: '/tools',
+        name: 'tools',
+        component: () => import('../views/tools/index.vue'),
         children: []
     },
     {

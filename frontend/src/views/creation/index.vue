@@ -39,7 +39,7 @@ export default {
             formData: {
                 title: '',
                 type: [],
-                content: ''
+                content: "```js\nimport './asset/css/reset.css'\nimport './asset/less/app.less'\nimport Antd from 'ant-design-vue'\nimport 'ant-design-vue/dist/antd.css'\nimport Vue from 'vue'\nimport App from './App.vue'\nimport './asset/font/iconfont.css'\nimport mavonEditor from 'mavon-editor'\nimport 'mavon-editor/dist/css/index.css'\nconst markdownIt = require('markdown-it')\nVue.prototype.$md = new markdownIt()\nimport 'github-markdown-css'\nVue.use(mavonEditor)\nVue.use(Antd)\nimport router from './router/index'\nimport store from './store'\n\nnew Vue({\n    router,\n    store,\n    render: h => h(App)\n}).$mount('#app')\n```\n"
             },
             loading: false,
             formWarpLayout: { span: 10, offset: 0 },

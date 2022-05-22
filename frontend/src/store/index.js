@@ -2,11 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import user from './module/user'
+import userinfo from './module/userinfo'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
-        user
+        user,
+        userinfo
     },
     state: {
         deepcopy: function (item) {

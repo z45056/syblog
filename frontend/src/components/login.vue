@@ -32,7 +32,7 @@
         >
             Remember me
         </a-checkbox>
-        <a class="login-form-forgot" href="">Forgot password</a>
+        <a class="login-form-forgot" href="javascript:;" @click="forgotUser">Forgot password</a>
         <a-button type="primary" html-type="submit" class="login-form-button">Log in</a-button>
         Or
         <a href="">register now!</a>
@@ -54,7 +54,8 @@ export default {
             formData: {
                 username: '',
                 password: '',
-                checkPass: ''
+                checkPass: '',
+                remember: false
             },
             rules: {
                 username: [
@@ -68,6 +69,14 @@ export default {
             }
         };
     },
+    watch: {
+        // 监听
+    },
+    mounted () {
+        this.form.setFieldsValue({ ['username']: localStorage.getItem('user') || '' })
+        // AES.DECRYPT 解密
+        this.form.setFieldsValue({ ['password']: this.$cjs.AES.decrypt(localStorage.getItem('key'), 'password').toString(this.$cjs.enc.Utf8) || '' })
+    },
     beforeCreate() {
         this.form = this.$form.createForm(this, { name: 'normal_login' });
     },
@@ -78,13 +87,24 @@ export default {
             const expires = "expires="+d.toGMTString();
             document.cookie = cname + "=" + cvalue + "; " + expires;
         },
+        forgotUser () {
+            localStorage.removeItem('user')
+            localStorage.removeItem('key')
+            this.$message.success('操作成功')
+        },
         handleSubmit(e) {
             e.preventDefault()
             this.form.validateFields((err, values) => {
+                const { username, password, remember } = values
+                if (remember && password && username) {
+                    localStorage.setItem('user', username)
+                    // AES.ENCRYPT 加密
+                    localStorage.setItem('key', this.$cjs.AES.encrypt('123456', 'password').toString())
+                }
                 if (!err) {
                     const params = {
-                        username: values.username,
-                        password: values.password
+                        username,
+                        password
                     }
                     this.$store.dispatch('user/login', params).then(res => {
                         this.$message.success('登录成功');

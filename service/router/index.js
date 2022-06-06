@@ -4,7 +4,7 @@ const router = express.Router()
 
 // 用户
 router.use('/api', require('./user'))
-router.use('/my', require('./user_info'))
+router.use('/article', require('./article'))
 
 
 module.exports = router

@@ -23,6 +23,8 @@ Vue.prototype.$md = new markdownIt({
 })
 // Vue.prototype.$md.options.highlight = true
 import 'github-markdown-css'
+const CryptoJS = require('crypto-js')
+Vue.prototype.$cjs = CryptoJS
 Vue.prototype.$bus = new Vue()
 Vue.use(mavonEditor)
 Vue.use(Antd)
